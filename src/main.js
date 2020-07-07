@@ -5,6 +5,9 @@ import store from './store'
 
 Vue.config.productionTip = false
 
+// Восстанавливаем данные из localStorage
+store.commit('initialiseStore')
+
 new Vue({
   router,
   store,

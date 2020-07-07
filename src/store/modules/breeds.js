@@ -1,3 +1,5 @@
+// Модуль отвечает за полчуение и хранение данных пород и их группировку.
+
 import {
   fetchAllBreeds
 } from '@/api/dog'
@@ -24,7 +26,7 @@ const mutations = {
 }
 
 const actions = {
-  async fetchData ({ commit, state: { pageSize } }) {
+  async fetchData ({ commit }) {
     commit('startFetchingData')
     try {
       const response = await fetchAllBreeds()
