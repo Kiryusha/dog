@@ -36,15 +36,15 @@ const actions = {
 }
 
 const getters = {
-  processedList (state) {
-    switch (state.sorting) {
-      case 'alphabetical':
-        return [...state.data].sort((a, b) => {
-          return a.breed > b.breed ? 1 : -1
-        })
-      default:
-        return state.data
-    }
+  groupedBreeds (state) {
+    return state.data.reduce((obj, breed) => {
+      const firstLetter = breed.charAt(0)
+
+      obj[firstLetter] = obj[firstLetter] || []
+      obj[firstLetter] = [...obj[firstLetter], breed]
+
+      return obj
+    }, {})
   }
 }
 
