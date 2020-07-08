@@ -69,6 +69,8 @@ import {
 } from 'vuex'
 
 export default {
+  name: 'BreedList',
+
   computed: {
     ...mapState('breeds', ['isOpen']),
     ...mapGetters('breeds', ['groupedBreeds']),

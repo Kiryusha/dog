@@ -6,7 +6,6 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
 import Header from '@/components/layout/Header'
 
 export default {
@@ -14,15 +13,6 @@ export default {
 
   components: {
     Header
-  },
-
-  created () {
-    this['list/fetchData']()
-    this['breeds/fetchData']()
-  },
-
-  methods: {
-    ...mapActions(['list/fetchData', 'breeds/fetchData'])
   }
 }
 </script>

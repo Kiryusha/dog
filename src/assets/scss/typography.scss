@@ -32,6 +32,19 @@
   line-height: 28px;
 }
 
+@mixin typography-item {
+  @include typography-base;
+  font-size: 25px;
+  line-height: 28px;
+  font-weight: 600;
+  letter-spacing: .01em;
+}
+
+@mixin typography-big-item {
+  @include typography-item;
+  font-size: 30px;
+}
+
 @mixin typography-breed {
   @include typography-base;
   font-size: 12px;

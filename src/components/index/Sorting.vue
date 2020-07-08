@@ -20,6 +20,8 @@ import {
 } from 'vuex'
 
 export default {
+  name: 'Sorting',
+
   computed: {
     ...mapState('list', ['sorting'])
   },

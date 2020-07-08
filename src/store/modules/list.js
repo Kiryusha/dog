@@ -25,10 +25,12 @@ const mutations = {
   },
 
   fetchedData (state, { message = [] }) {
-    state.data = message.map(item => ({
+    const items = message.map(item => ({
       url: item,
       breed: parseBreed(item)
     }))
+
+    state.data = [...state.data, ...items]
   },
 
   setSorting (state, payload) {

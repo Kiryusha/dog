@@ -8,12 +8,12 @@ const state = () => {
 }
 
 const mutations = {
-  addItem (state, payload) {
-    state.data = [...state.data, payload]
-  },
-
-  removeItem (state, payload) {
-    state.data = state.data.filter(item => item.url !== payload.url)
+  toggleItem (state, payload) {
+    if (state.data.length && state.data.some(item => item.url === payload.url)) {
+      state.data = state.data.filter(item => item.url !== payload.url)
+    } else {
+      state.data = [...state.data, payload]
+    }
   }
 }
 
