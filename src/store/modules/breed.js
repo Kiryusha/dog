@@ -23,10 +23,12 @@ const mutations = {
   },
 
   fetchedData (state, { message = {} }) {
-    state.data = message.map(item => ({
+    const items = message.map(item => ({
       url: item,
       breed: parseBreed(item)
     }))
+
+    state.data = [...state.data, ...items]
   }
 }
 
@@ -34,7 +36,7 @@ const actions = {
   async fetchData ({ commit, state: { pageSize } }, breed) {
     commit('startFetchingData')
     try {
-      const response = await fetchBreed({ breed, pageSize })
+      const response = await fetchBreed({ breed, amount: pageSize })
       commit('fetchedData', response.data)
     } finally {
       commit('stopFetchingData')

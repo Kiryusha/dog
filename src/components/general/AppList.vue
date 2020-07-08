@@ -37,7 +37,6 @@ export default {
 
   computed: {
     processedList () {
-      console.log(1)
       return this.list.map(item => ({
         ...item,
         isFavourite: !this.isFavourite(item)

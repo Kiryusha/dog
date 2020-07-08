@@ -10,7 +10,7 @@ export function fetchAllBreeds () {
 export function fetchBreed ({ breed, amount }) {
   return fetcher({
     method: 'GET',
-    url: `/api/breed/${breed}/images/${amount}`
+    url: `/api/breed/${breed}/images/random/${amount}`
   })
 }
 

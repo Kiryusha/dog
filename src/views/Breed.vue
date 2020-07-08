@@ -3,7 +3,7 @@
     <div class="content">
       <Filters />
       <app-list
-        :list="processedList"
+        :list="list"
         :favourites="favourites"
         @click="handleClick"
         @scrolledDown="fetchMore"
@@ -15,14 +15,13 @@
 <script>
 import Filters from '@/components/index/Filters'
 import {
-  mapGetters,
   mapActions,
   mapMutations,
   mapState
 } from 'vuex'
 
 export default {
-  name: 'Home',
+  name: 'Breed',
 
   components: {
     Filters
@@ -31,11 +30,21 @@ export default {
   computed: {
     ...mapState('favourites', { favourites: 'data' }),
     ...mapState('breeds', { breeds: 'data' }),
-    ...mapGetters('list', ['processedList'])
+    ...mapState('breed', { list: 'data' }),
+
+    currentBreed () {
+      return this.$route.params.breed
+    }
+  },
+
+  watch: {
+    currentBreed (value) {
+      this.fetchList(value)
+    }
   },
 
   created () {
-    this.fetchList()
+    this.fetchList(this.currentBreed)
     if (!this.breeds.length) {
       this.fetchBreeds()
     }
@@ -44,12 +53,12 @@ export default {
   methods: {
     ...mapMutations('favourites', ['toggleItem']),
 
-    ...mapActions('list', { fetchList: 'fetchData' }),
+    ...mapActions('breed', { fetchList: 'fetchData' }),
 
     ...mapActions('breeds', { fetchBreeds: 'fetchData' }),
 
     fetchMore () {
-      this.fetchList()
+      this.fetchList(this.currentBreed)
     },
 
     handleClick (item) {
