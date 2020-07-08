@@ -7,7 +7,8 @@ function addStyleResource (rule) {
     .options({
       patterns: [
         path.resolve(__dirname, './src/assets/scss/typography.scss'),
-        path.resolve(__dirname, './src/assets/scss/variables.scss')
+        path.resolve(__dirname, './src/assets/scss/variables.scss'),
+        path.resolve(__dirname, './src/assets/scss/mixins.scss')
       ]
     })
 }

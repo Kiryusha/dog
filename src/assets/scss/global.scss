@@ -1,5 +1,6 @@
 html {
   @include typography-p;
+  color: $gray;
 }
 
 *,
@@ -12,6 +13,7 @@ html {
 html,
 body {
   height: 100%;
+  background: $black;
 }
 
 .page {
@@ -19,10 +21,14 @@ body {
 }
 
 .content {
-  max-width: 1170px;
+  max-width: 1280px;
   width: 100%;
   margin: 0 auto;
-  padding: 12px;
+  padding: 0 60px;
+}
+
+a {
+  @include a-reset;
 }
 
 h1 {
