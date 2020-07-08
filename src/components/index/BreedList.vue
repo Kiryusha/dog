@@ -48,7 +48,7 @@
           </span>
           <router-link
             v-for="(breed, index) in groupedBreeds[capital]"
-            :key="index"
+            :key="`${breed}${index}`"
             :to="`/${breed}`"
             class="breed"
             :class="{'active': breed === currentBreed}"
