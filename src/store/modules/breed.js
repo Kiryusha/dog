@@ -9,7 +9,8 @@ const state = () => {
   return {
     data: [],
     isFetching: false,
-    pageSize: 20
+    pageSize: 20,
+    currentBreed: ''
   }
 }
 
@@ -22,22 +23,26 @@ const mutations = {
     state.isFetching = false
   },
 
-  fetchedData (state, { message = {} }) {
+  fetchedData (state, { message = {}, shouldAdd }) {
     const items = message.map(item => ({
       url: item,
       breed: parseBreed(item)
     }))
 
-    state.data = [...state.data, ...items]
+    if (shouldAdd) {
+      state.data = [...state.data, ...items]
+    } else {
+      state.data = items
+    }
   }
 }
 
 const actions = {
-  async fetchData ({ commit, state: { pageSize } }, breed) {
+  async fetchData ({ commit, state: { pageSize } }, { breed, shouldAdd }) {
     commit('startFetchingData')
     try {
       const response = await fetchBreed({ breed, amount: pageSize })
-      commit('fetchedData', response.data)
+      commit('fetchedData', { message: response.data.message, shouldAdd })
     } finally {
       commit('stopFetchingData')
     }

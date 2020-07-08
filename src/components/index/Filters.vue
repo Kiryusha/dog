@@ -3,7 +3,10 @@
     <div class="left">
       <BreedList />
     </div>
-    <div class="right">
+    <div
+      v-if="!currentBreed"
+      class="right"
+    >
       <Sorting />
     </div>
   </section>
@@ -19,6 +22,12 @@ export default {
   components: {
     BreedList,
     Sorting
+  },
+
+  computed: {
+    currentBreed () {
+      return this.$route.params.breed
+    }
   }
 }
 </script>

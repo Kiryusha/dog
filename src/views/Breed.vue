@@ -39,12 +39,16 @@ export default {
 
   watch: {
     currentBreed (value) {
-      this.fetchList(value)
+      this.fetchList({
+        breed: this.currentBreed
+      })
     }
   },
 
   created () {
-    this.fetchList(this.currentBreed)
+    this.fetchList({
+      breed: this.currentBreed
+    })
     if (!this.breeds.length) {
       this.fetchBreeds()
     }
@@ -58,7 +62,10 @@ export default {
     ...mapActions('breeds', { fetchBreeds: 'fetchData' }),
 
     fetchMore () {
-      this.fetchList(this.currentBreed)
+      this.fetchList({
+        breed: this.currentBreed,
+        shouldAdd: true
+      })
     },
 
     handleClick (item) {

@@ -9,8 +9,12 @@
           Избранные пёсели
         </span>
         <app-icon
-          class="icon"
+          class="icon heart"
           name="heart"
+        />
+        <app-icon
+          class="icon heart-full"
+          name="heartFull"
         />
       </router-link>
     </div>
@@ -29,8 +33,24 @@ export default {
   align-items: center;
 }
 
+.heart-full {
+  display: none;
+}
+
 .link {
   display: inline-block;
+
+  &.router-link-active {
+    color: $white;
+
+    .heart {
+      display: none;
+    }
+
+    .heart-full {
+      display: inline-block;
+    }
+  }
 }
 
 .icon {
