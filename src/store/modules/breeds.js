@@ -7,6 +7,7 @@ import {
 const state = () => {
   return {
     data: [],
+    isOpen: false,
     isFetching: false
   }
 }
@@ -22,6 +23,10 @@ const mutations = {
 
   fetchedData (state, { message = {} }) {
     state.data = Object.keys(message)
+  },
+
+  toggleOpen (state) {
+    state.isOpen = !state.isOpen
   }
 }
 

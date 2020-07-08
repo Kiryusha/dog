@@ -1,5 +1,5 @@
 @mixin typography-base {
-  font-family: "Open Sans", sans-serif;
+  font-family: "IBM Plex Sans", sans-serif;
   font-size: 16px;
   font-weight: normal;
   font-style: normal;
@@ -23,5 +23,17 @@
 @mixin typography-p {
   @include typography-base;
   font-size: 16px;
-  line-height: 24px;
+  line-height: 20px;
+}
+
+@mixin typography-capital {
+  @include typography-base;
+  font-size: 20px;
+  line-height: 28px;
+}
+
+@mixin typography-breed {
+  @include typography-base;
+  font-size: 12px;
+  line-height: 16px;
 }
